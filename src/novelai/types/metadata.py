@@ -144,10 +144,11 @@ class Metadata(BaseModel):
     )
     sampler: Sampler = Sampler.EULER
     sm: bool = True
-    sm_dyn: bool = False
+    sm_dyn: bool = True
     uncond_scale: float = Field(default=1.0, ge=0, le=1.5, multiple_of=0.05)
     cfg_rescale: float = Field(default=0, ge=0, le=1, multiple_of=0.02)
     noise_schedule: Noise = Noise.NATIVE
+    skip_cfg_above_sigma: int | None = Field(default=None, ge=19, le=19)
 
     # img2img
     image: str | None = None

@@ -29,6 +29,7 @@ class Model(Enum):
     # Anime V3
     V3 = "nai-diffusion-3"
     V3INP = "nai-diffusion-3-inpainting"
+    V4Preview = "nai-diffusion-4-curated-preview"
 
     # Furry model beta v1.3
     # Note that prompt preset in Metadata added by qualityToggle and ucPreset could be different,
@@ -69,6 +70,7 @@ class Sampler(Enum):
     EULER = "k_euler"
     EULER_ANC = "k_euler_ancestral"
     DPM = "k_dpmpp_2s_ancestral"
+    DPM_SDE = "k_dpmpp_2m_sde"
 
 
 class Noise(Enum):

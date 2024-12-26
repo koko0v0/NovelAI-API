@@ -36,7 +36,7 @@ class TestGenerateImage(unittest.IsolatedAsyncioTestCase):
     )
     async def test_generate(self):
         await self.naiclient.init()
-        metadata = Metadata(prompt="1girl")
+        metadata = Metadata(prompt="1girl", dynamic_thresholding=True, cfg_rescale=0.16)
 
         async def task_api():
             with self.subTest("task_api"):
