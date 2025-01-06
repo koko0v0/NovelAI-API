@@ -1,4 +1,5 @@
 import asyncio
+import traceback
 from asyncio import Task
 from datetime import datetime
 
@@ -97,7 +98,7 @@ class NAIClient:
         """
         try:
             self.client = AsyncClient(
-                timeout=timeout, proxies=self.proxy, headers=HEADERS
+                timeout=timeout, proxy=self.proxy, headers=HEADERS
             )
 
             if self.user.token:
@@ -114,7 +115,8 @@ class NAIClient:
             self.close_delay = close_delay
             if self.auto_close:
                 await self.reset_close_task()
-        except Exception:
+        except Exception as e:
+            logger.error(f"Failed to initialize NovelAI client: {e}", traceback.format_exc())
             await self.close(0)
             raise
 
